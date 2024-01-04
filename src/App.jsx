@@ -5,7 +5,36 @@ import styles from './App.module.css';
 
 import './global.css';
 
-
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/edu2406.png',
+      name: 'Carlos Eduardo',
+      role: 'Estudante'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋', },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2024-01-03 20:00:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/renatomarinhofr.png',
+      name: 'Renato Marinho',
+      role: 'Programador'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋', },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2024-01-10 20:00:00'),
+  },
+];
 
 export function App() {
   return (
@@ -16,15 +45,16 @@ export function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="edu"
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quae tenetur consectetur! Explicabo dolores vel alias ad, accusamus dolorem voluptates nobis tenetur, ipsa necessitatibus sit nulla, velit hic. Tenetur, adipisci."
-          />
-          <Post
-            author="Carlos"
-            content="Um novo post muito legal"
-          />
-          
+          {posts.map(post => {
+            return (
+              <Post 
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
